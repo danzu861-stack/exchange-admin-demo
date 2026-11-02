@@ -1,45 +1,75 @@
+
 <!DOCTYPE html>
-
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>EXCHANGE PRO ADMIN</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exchange Admin</title>
 <style>
-
 *{box-sizing:border-box}
-
-body{margin:0;background:#0b1120;color:white;font-family:Arial}
-
-header{padding:22px;background:#172338;color:#60a5fa;font-size:23px;font-weight:bold}
-
-main{padding:18px;max-width:850px;margin:auto}
-
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
-.card{background:#172338;padding:20px;border-radius:12px}
-
-.number{font-size:25px;font-weight:bold;color:#60a5fa;margin-top:12px}
-
-nav{display:flex;gap:8px;margin:22px 0;flex-wrap:wrap}
-
-button{padding:12px;background:#2563eb;color:white;border:0;border-radius:8px}
-
-.panel{background:#172338;padding:16px;border-radius:12px;margin-top:12px;overflow:auto}
-
-table{width:100%;text-align:left;border-collapse:collapse}
-
-td,th{padding:13px;border-bottom:1px solid #334155}
-
-small{color:#94a3b8}
-
-.green{color:#4ade80}
-
+body{margin:0;background:#0b1120;color:#fff;font-family:Arial,sans-serif}
+header{background:#111c30;padding:20px;border-bottom:1px solid #26344c}
+header h2{margin:0;color:#60a5fa}
+.container{max-width:900px;margin:25px auto;padding:15px}
+.card{background:#142138;padding:20px;border-radius:12px;margin-bottom:18px;border:1px solid #263957}
+h3{margin-top:0;color:#93c5fd}
+input,select,button{width:100%;padding:13px;margin:8px 0;border-radius:7px;border:1px solid #34445f;background:#0b1528;color:white}
+button{background:#2563eb;border:0;font-weight:bold;cursor:pointer}
+button:hover{background:#1d4ed8}
+.item{padding:12px;border-bottom:1px solid #34445f}
+.small{color:#94a3b8;font-size:13px}
 </style>
+</head>
+<body>
+<header>
+<h2>EXCHANGE ADMIN</h2>
+<p class="small">Hệ thống demo quản lý giao dịch</p>
+</header>
 
-</head
+<div class="container">
+<div class="card">
+<h3>📊 Tổng quan</h3>
+<p>Số giao dịch demo: <b id="count">0</b></p>
+<p>Trạng thái: <b style="color:#4ade80">Đang hoạt động</b></p>
+</div>
+
+<div class="card">
+<h3>📝 Tạo giao dịch thử nghiệm</h3>
+<select id="card">
+<option>Viettel</option>
+<option>Mobifone</option>
+<option>Vinaphone</option>
+</select>
+<select id="value">
+<option value="10000">10.000đ</option>
+<option value="20000">20.000đ</option>
+<option value="50000">50.000đ</option>
+<option value="100000">100.000đ</option>
+</select>
+<button onclick="addDemo()">Tạo giao dịch demo</button>
+<p class="small">Chỉ mô phỏng giao diện, không nhận mã thẻ hoặc tiền thật.</p>
+</div>
+
+<div class="card">
+<h3>📋 Lịch sử giao dịch demo</h3>
+<div id="history" class="small">Chưa có giao dịch.</div>
+</div>
+</div>
+
+<script>
+let count=0;
+function addDemo(){
+ const card=document.getElementById('card').value;
+ const value=document.getElementById('value').value;
+ count++;
+ document.getElementById('count').textContent=count;
+ const history=document.getElementById('history');
+ if(count===1) history.innerHTML='';
+ const item=document.createElement('div');
+ item.className='item';
+ item.textContent='Giao dịch #'+count+' — '+card+' — '+Number(value).toLocaleString('vi-VN')+'đ — Chờ xử lý (demo)';
+ history.prepend(item);
+}
+</script>
+</body>
+</html>
