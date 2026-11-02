@@ -3,72 +3,128 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exchange Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EXCHANGE PRO</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#0b1120;color:#fff;font-family:Arial,sans-serif}
-header{background:#111c30;padding:20px;border-bottom:1px solid #26344c}
-header h2{margin:0;color:#60a5fa}
-.container{max-width:900px;margin:25px auto;padding:15px}
-.card{background:#142138;padding:20px;border-radius:12px;margin-bottom:18px;border:1px solid #263957}
-h3{margin-top:0;color:#93c5fd}
-input,select,button{width:100%;padding:13px;margin:8px 0;border-radius:7px;border:1px solid #34445f;background:#0b1528;color:white}
-button{background:#2563eb;border:0;font-weight:bold;cursor:pointer}
-button:hover{background:#1d4ed8}
-.item{padding:12px;border-bottom:1px solid #34445f}
-.small{color:#94a3b8;font-size:13px}
+body{margin:0;background:#080d19;color:#e8eefc;font-family:Arial,sans-serif}
+header{height:70px;background:#10182a;border-bottom:1px solid #263653;display:flex;align-items:center;justify-content:space-between;padding:0 6%}
+.logo{font-size:21px;font-weight:bold;color:#8b9cff}
+.logo span{color:white}
+.status{font-size:12px;color:#4ade80}
+main{max-width:1050px;margin:35px auto;padding:0 18px}
+.card{background:#142138;border:1px solid #293a58;border-radius:14px;padding:22px;margin-bottom:18px}
+h1{font-size:25px}
+h3{margin-top:0;color:#a5b8ff}
+input,select{width:100%;padding:14px;margin:8px 0 16px;background:#0a1427;border:1px solid #344461;border-radius:8px;color:white}
+label{font-size:13px;color:#aab7cc}
+button{width:100%;padding:14px;background:#526ff0;border:0;border-radius:8px;color:white;font-weight:bold;margin-top:8px}
+button.secondary{background:#293a58}
+.small{font-size:12px;color:#8492aa;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.number{font-size:25px;font-weight:bold;margin-top:10px}
+.blue{color:#8ba5ff}
+.green{color:#4ade80}
+.item{padding:13px 0;border-bottom:1px solid #293a58;font-size:13px}
+.tag{color:#facc15}
+#dashboard{display:none}
+.login{max-width:400px;margin:70px auto}
+footer{text-align:center;color:#66758e;padding:25px;font-size:12px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.login{margin:35px auto}}
 </style>
 </head>
 <body>
 <header>
-<h2>EXCHANGE ADMIN</h2>
-<p class="small">Hệ thống demo quản lý giao dịch</p>
+<div class="logo">EXCHANGE <span>PRO</span></div>
+<div class="status">● DEMO VERSION</div>
 </header>
 
-<div class="container">
+<div id="login" class="login card">
+<h1>Đăng nhập Admin</h1>
+<p class="small">Đăng nhập để xem bảng điều khiển demo.</p>
+<label>Tên đăng nhập</label>
+<input id="username" placeholder="Nhập tên đăng nhập">
+<label>Mật khẩu</label>
+<input id="password" type="password" placeholder="Nhập mật khẩu">
+<button onclick="loginAdmin()">Đăng nhập</button>
+<p id="error" class="small"></p>
+<p class="small">Tài khoản demo: admin / 123456</p>
+</div>
+
+<main id="dashboard">
+<h1>Xin chào, Admin 👋</h1>
+<p class="small">Bảng điều khiển Exchange Pro</p>
+
+<div class="grid">
 <div class="card">
-<h3>📊 Tổng quan</h3>
-<p>Số giao dịch demo: <b id="count">0</b></p>
-<p>Trạng thái: <b style="color:#4ade80">Đang hoạt động</b></p>
+<div class="small">Tổng giao dịch demo</div>
+<div class="number blue" id="count">0</div>
+</div>
+<div class="card">
+<div class="small">Tổng mệnh giá demo</div>
+<div class="number green" id="total">0đ</div>
+</div>
+<div class="card">
+<div class="small">Trạng thái</div>
+<div class="number green">Hoạt động</div>
+</div>
 </div>
 
 <div class="card">
-<h3>📝 Tạo giao dịch thử nghiệm</h3>
-<select id="card">
+<h3>Tạo giao dịch thử nghiệm</h3>
+<label>Nhà mạng</label>
+<select id="network">
 <option>Viettel</option>
 <option>Mobifone</option>
 <option>Vinaphone</option>
 </select>
-<select id="value">
+<label>Mệnh giá</label>
+<select id="amount">
 <option value="10000">10.000đ</option>
 <option value="20000">20.000đ</option>
 <option value="50000">50.000đ</option>
 <option value="100000">100.000đ</option>
 </select>
-<button onclick="addDemo()">Tạo giao dịch demo</button>
-<p class="small">Chỉ mô phỏng giao diện, không nhận mã thẻ hoặc tiền thật.</p>
+<button onclick="createDemo()">Tạo giao dịch demo</button>
 </div>
 
 <div class="card">
-<h3>📋 Lịch sử giao dịch demo</h3>
+<h3>Lịch sử giao dịch</h3>
 <div id="history" class="small">Chưa có giao dịch.</div>
 </div>
-</div>
+<button class="secondary" onclick="logoutAdmin()">Đăng xuất</button>
+</main>
+
+<footer>EXCHANGE PRO · DEMO VERSION · 2026</footer>
 
 <script>
-let count=0;
-function addDemo(){
- const card=document.getElementById('card').value;
- const value=document.getElementById('value').value;
- count++;
- document.getElementById('count').textContent=count;
- const history=document.getElementById('history');
- if(count===1) history.innerHTML='';
- const item=document.createElement('div');
- item.className='item';
- item.textContent='Giao dịch #'+count+' — '+card+' — '+Number(value).toLocaleString('vi-VN')+'đ — Chờ xử lý (demo)';
- history.prepend(item);
+function loginAdmin(){
+const u=document.getElementById('username').value;
+const p=document.getElementById('password').value;
+if(u==='admin'&&p==='123456'){
+document.getElementById('login').style.display='none';
+document.getElementById('dashboard').style.display='block';
+}else{
+document.getElementById('error').textContent='Thông tin đăng nhập chưa đúng.';
+}
+}
+function logoutAdmin(){
+document.getElementById('dashboard').style.display='none';
+document.getElementById('login').style.display='block';
+}
+let count=0,total=0;
+function createDemo(){
+const n=document.getElementById('network').value;
+const a=Number(document.getElementById('amount').value);
+count++;total+=a;
+document.getElementById('count').textContent=count;
+document.getElementById('total').textContent=total.toLocaleString('vi-VN')+'đ';
+const h=document.getElementById('history');
+if(count===1)h.innerHTML='';
+const item=document.createElement('div');
+item.className='item';
+item.textContent='Giao dịch #'+count+' · '+n+' · '+a.toLocaleString('vi-VN')+'đ · DEMO';
+h.prepend(item);
 }
 </script>
 </body>
