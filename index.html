@@ -4,127 +4,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EXCHANGE PRO</title>
+<title>FF DIAMOND SHOP</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#080d19;color:#e8eefc;font-family:Arial,sans-serif}
-header{height:70px;background:#10182a;border-bottom:1px solid #263653;display:flex;align-items:center;justify-content:space-between;padding:0 6%}
-.logo{font-size:21px;font-weight:bold;color:#8b9cff}
+body{margin:0;background:#0b0b10;color:white;font-family:Arial,sans-serif}
+header{padding:20px;background:#17151b;border-bottom:2px solid #ff9d00}
+.logo{font-size:23px;font-weight:900;color:#ffae00}
 .logo span{color:white}
-.status{font-size:12px;color:#4ade80}
-main{max-width:1050px;margin:35px auto;padding:0 18px}
-.card{background:#142138;border:1px solid #293a58;border-radius:14px;padding:22px;margin-bottom:18px}
-h1{font-size:25px}
-h3{margin-top:0;color:#a5b8ff}
-input,select{width:100%;padding:14px;margin:8px 0 16px;background:#0a1427;border:1px solid #344461;border-radius:8px;color:white}
-label{font-size:13px;color:#aab7cc}
-button{width:100%;padding:14px;background:#526ff0;border:0;border-radius:8px;color:white;font-weight:bold;margin-top:8px}
-button.secondary{background:#293a58}
-.small{font-size:12px;color:#8492aa;line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.number{font-size:25px;font-weight:bold;margin-top:10px}
-.blue{color:#8ba5ff}
-.green{color:#4ade80}
-.item{padding:13px 0;border-bottom:1px solid #293a58;font-size:13px}
-.tag{color:#facc15}
-#dashboard{display:none}
-.login{max-width:400px;margin:70px auto}
-footer{text-align:center;color:#66758e;padding:25px;font-size:12px}
-@media(max-width:650px){.grid{grid-template-columns:1fr}.login{margin:35px auto}}
+main{max-width:850px;margin:25px auto;padding:15px}
+.banner{padding:30px 20px;border-radius:15px;background:linear-gradient(120deg,#56220d,#c65b0b,#201016);text-align:center}
+.banner h1{font-size:30px;margin:5px;color:#ffca55}
+.banner p{color:#ffe3bd}
+.card{background:#191820;border:1px solid #39313a;border-radius:13px;padding:20px;margin-top:20px}
+h2{font-size:19px;color:#ffb52e;margin-top:0}
+input{width:100%;padding:14px;background:#0e0d13;border:1px solid #51434a;border-radius:8px;color:white;margin-top:10px}
+.packages{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.package{background:#24212a;border:1px solid #51434a;border-radius:12px;padding:17px;text-align:center;cursor:pointer}
+.package.active{border:2px solid #ffae00;background:#392817}
+.diamond{font-size:25px;color:#55caff;font-weight:bold}
+.price{color:#ffbd43;font-size:19px;font-weight:bold;margin-top:9px}
+button{width:100%;padding:15px;background:linear-gradient(90deg,#ff9d00,#e65a00);border:0;border-radius:9px;color:white;font-weight:bold;font-size:16px;margin-top:18px}
+.note{font-size:12px;color:#a9a3ae;line-height:1.6}
+#result{color:#69e6a1;margin-top:15px}
+footer{text-align:center;color:#777;padding:25px;font-size:12px}
+@media(max-width:500px){.packages{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">EXCHANGE <span>PRO</span></div>
-<div class="status">● DEMO VERSION</div>
+<div class="logo">FF <span>DIAMOND SHOP</span></div>
 </header>
 
-<div id="login" class="login card">
-<h1>Đăng nhập Admin</h1>
-<p class="small">Đăng nhập để xem bảng điều khiển demo.</p>
-<label>Tên đăng nhập</label>
-<input id="username" placeholder="Nhập tên đăng nhập">
-<label>Mật khẩu</label>
-<input id="password" type="password" placeholder="Nhập mật khẩu">
-<button onclick="loginAdmin()">Đăng nhập</button>
-<p id="error" class="small"></p>
-<p class="small">Tài khoản demo: admin / 123456</p>
-</div>
-
-<main id="dashboard">
-<h1>Xin chào, Admin 👋</h1>
-<p class="small">Bảng điều khiển Exchange Pro</p>
-
-<div class="grid">
-<div class="card">
-<div class="small">Tổng giao dịch demo</div>
-<div class="number blue" id="count">0</div>
-</div>
-<div class="card">
-<div class="small">Tổng mệnh giá demo</div>
-<div class="number green" id="total">0đ</div>
-</div>
-<div class="card">
-<div class="small">Trạng thái</div>
-<div class="number green">Hoạt động</div>
-</div>
+<main>
+<div class="banner">
+<h1>FREE FIRE DIAMOND</h1>
+<p>CHỌN GÓI KIM CƯƠNG BẠN MUỐN</p>
 </div>
 
 <div class="card">
-<h3>Tạo giao dịch thử nghiệm</h3>
-<label>Nhà mạng</label>
-<select id="network">
-<option>Viettel</option>
-<option>Mobifone</option>
-<option>Vinaphone</option>
-</select>
-<label>Mệnh giá</label>
-<select id="amount">
-<option value="10000">10.000đ</option>
-<option value="20000">20.000đ</option>
-<option value="50000">50.000đ</option>
-<option value="100000">100.000đ</option>
-</select>
-<button onclick="createDemo()">Tạo giao dịch demo</button>
+<h2>01. Thông tin người chơi</h2>
+<input id="uid" placeholder="Nhập UID Free Fire (demo)">
 </div>
 
 <div class="card">
-<h3>Lịch sử giao dịch</h3>
-<div id="history" class="small">Chưa có giao dịch.</div>
+<h2>02. Chọn gói kim cương</h2>
+<div class="packages">
+<div class="package" onclick="choose(this,20000,499)">
+<div class="diamond">💎 499 KC</div>
+<div class="price">20.000đ</div>
 </div>
-<button class="secondary" onclick="logoutAdmin()">Đăng xuất</button>
+<div class="package" onclick="choose(this,50000,800)">
+<div class="diamond">💎 800 KC</div>
+<div class="price">50.000đ</div>
+</div>
+<div class="package" onclick="choose(this,100000,999)">
+<div class="diamond">💎 999 KC</div>
+<div class="price">100.000đ</div>
+</div>
+<div class="package" onclick="choose(this,200000,2200)">
+<div class="diamond">💎 2.200 KC</div>
+<div class="price">200.000đ</div>
+</div>
+<div class="package" onclick="choose(this,500000,5000)">
+<div class="diamond">💎 5.000 KC</div>
+<div class="price">500.000đ</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>03. Xác nhận đơn demo</h2>
+<p id="selected" class="note">Bạn chưa chọn gói kim cương.</p>
+<button onclick="createOrder()">TẠO ĐƠN DEMO</button>
+<div id="result"></div>
+<p class="note">Đây là giao diện mô phỏng do người dùng tạo, không phải cổng nạp chính thức của Garena. Không thanh toán thật và không có chức năng cộng kim cương vào tài khoản.</p>
+</div>
 </main>
 
-<footer>EXCHANGE PRO · DEMO VERSION · 2026</footer>
+<footer>FF DIAMOND SHOP · FAN-MADE DEMO</footer>
 
 <script>
-function loginAdmin(){
-const u=document.getElementById('username').value;
-const p=document.getElementById('password').value;
-if(u==='admin'&&p==='123456'){
-document.getElementById('login').style.display='none';
-document.getElementById('dashboard').style.display='block';
-}else{
-document.getElementById('error').textContent='Thông tin đăng nhập chưa đúng.';
+let selected=null;
+function choose(el,price,diamonds){
+document.querySelectorAll('.package').forEach(x=>x.classList.remove('active'));
+el.classList.add('active');
+selected={price,diamonds};
+document.getElementById('selected').textContent=
+'Gói đã chọn: '+diamonds.toLocaleString('vi-VN')+
+' KC — '+price.toLocaleString('vi-VN')+'đ';
 }
-}
-function logoutAdmin(){
-document.getElementById('dashboard').style.display='none';
-document.getElementById('login').style.display='block';
-}
-let count=0,total=0;
-function createDemo(){
-const n=document.getElementById('network').value;
-const a=Number(document.getElementById('amount').value);
-count++;total+=a;
-document.getElementById('count').textContent=count;
-document.getElementById('total').textContent=total.toLocaleString('vi-VN')+'đ';
-const h=document.getElementById('history');
-if(count===1)h.innerHTML='';
-const item=document.createElement('div');
-item.className='item';
-item.textContent='Giao dịch #'+count+' · '+n+' · '+a.toLocaleString('vi-VN')+'đ · DEMO';
-h.prepend(item);
+function createOrder(){
+let uid=document.getElementById('uid').value.trim();
+let result=document.getElementById('result');
+if(!uid){result.textContent='Vui lòng nhập UID demo.';return}
+if(!selected){result.textContent='Vui lòng chọn gói kim cương.';return}
+result.textContent='Đã tạo đơn mô phỏng: '+selected.diamonds.toLocaleString('vi-VN')+' KC. Không có thanh toán hoặc nạp kim cương thật.';
 }
 </script>
 </body>
