@@ -3,102 +3,123 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FF DIAMOND SHOP</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FF Diamond Shop</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#0b0b10;color:white;font-family:Arial,sans-serif}
 header{padding:20px;background:#17151b;border-bottom:2px solid #ff9d00}
-.logo{font-size:23px;font-weight:900;color:#ffae00}
-.logo span{color:white}
+.logo{font-size:22px;font-weight:bold;color:#ffae00}
 main{max-width:850px;margin:25px auto;padding:15px}
-.banner{padding:30px 20px;border-radius:15px;background:linear-gradient(120deg,#56220d,#c65b0b,#201016);text-align:center}
-.banner h1{font-size:30px;margin:5px;color:#ffca55}
-.banner p{color:#ffe3bd}
-.card{background:#191820;border:1px solid #39313a;border-radius:13px;padding:20px;margin-top:20px}
-h2{font-size:19px;color:#ffb52e;margin-top:0}
-input{width:100%;padding:14px;background:#0e0d13;border:1px solid #51434a;border-radius:8px;color:white;margin-top:10px}
+.card{background:#191820;border:1px solid #39313a;border-radius:13px;padding:20px;margin:18px 0}
+h1,h2{color:#ffb52e}
+input{width:100%;padding:14px;background:#0e0d13;border:1px solid #51434a;border-radius:8px;color:white;margin:10px 0}
+button{width:100%;padding:14px;background:linear-gradient(90deg,#ff9d00,#e65a00);border:0;border-radius:9px;color:white;font-weight:bold;margin-top:12px}
+.small{font-size:12px;color:#aaa;line-height:1.6}
+#dashboard{display:none}
+.login{max-width:400px;margin:65px auto}
 .packages{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.package{background:#24212a;border:1px solid #51434a;border-radius:12px;padding:17px;text-align:center;cursor:pointer}
+.package{background:#29232a;border:1px solid #55434a;border-radius:12px;padding:18px;text-align:center;cursor:pointer}
 .package.active{border:2px solid #ffae00;background:#392817}
-.diamond{font-size:25px;color:#55caff;font-weight:bold}
-.price{color:#ffbd43;font-size:19px;font-weight:bold;margin-top:9px}
-button{width:100%;padding:15px;background:linear-gradient(90deg,#ff9d00,#e65a00);border:0;border-radius:9px;color:white;font-weight:bold;font-size:16px;margin-top:18px}
-.note{font-size:12px;color:#a9a3ae;line-height:1.6}
-#result{color:#69e6a1;margin-top:15px}
-footer{text-align:center;color:#777;padding:25px;font-size:12px}
+.diamond{font-size:24px;color:#55caff;font-weight:bold}
+.price{font-size:19px;color:#ffbd43;margin-top:8px}
+.item{padding:13px 0;border-bottom:1px solid #39313a;font-size:13px;line-height:1.7}
 @media(max-width:500px){.packages{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
-<div class="logo">FF <span>DIAMOND SHOP</span></div>
-</header>
+<header><div class="logo">💎 FF DIAMOND SHOP</div></header>
 
-<main>
-<div class="banner">
-<h1>FREE FIRE DIAMOND</h1>
-<p>CHỌN GÓI KIM CƯƠNG BẠN MUỐN</p>
+<div id="login" class="login card">
+<h1>Đăng nhập Admin</h1>
+<p class="small">Đăng nhập để mở bảng điều khiển demo.</p>
+<input id="username" placeholder="Tên đăng nhập">
+<input id="password" type="password" placeholder="Mật khẩu">
+<button onclick="loginAdmin()">ĐĂNG NHẬP</button>
+<p id="error" class="small"></p>
+<p class="small">Tài khoản demo: admin / 123456</p>
 </div>
 
+<main id="dashboard">
+<h1>Shop nạp kim cương FF</h1>
+<p class="small">Giao diện mô phỏng, không liên kết hệ thống Garena.</p>
+
 <div class="card">
-<h2>01. Thông tin người chơi</h2>
-<input id="uid" placeholder="Nhập UID Free Fire (demo)">
+<h2>01. UID người chơi</h2>
+<input id="uid" placeholder="Nhập UID Free Fire">
 </div>
 
 <div class="card">
 <h2>02. Chọn gói kim cương</h2>
 <div class="packages">
 <div class="package" onclick="choose(this,20000,499)">
-<div class="diamond">💎 499 KC</div>
-<div class="price">20.000đ</div>
+<div class="diamond">💎 499 KC</div><div class="price">20.000đ</div>
 </div>
 <div class="package" onclick="choose(this,50000,800)">
-<div class="diamond">💎 800 KC</div>
-<div class="price">50.000đ</div>
+<div class="diamond">💎 800 KC</div><div class="price">50.000đ</div>
 </div>
 <div class="package" onclick="choose(this,100000,999)">
-<div class="diamond">💎 999 KC</div>
-<div class="price">100.000đ</div>
+<div class="diamond">💎 999 KC</div><div class="price">100.000đ</div>
 </div>
 <div class="package" onclick="choose(this,200000,2200)">
-<div class="diamond">💎 2.200 KC</div>
-<div class="price">200.000đ</div>
+<div class="diamond">💎 2.200 KC</div><div class="price">200.000đ</div>
 </div>
 <div class="package" onclick="choose(this,500000,5000)">
-<div class="diamond">💎 5.000 KC</div>
-<div class="price">500.000đ</div>
+<div class="diamond">💎 5.000 KC</div><div class="price">500.000đ</div>
 </div>
 </div>
 </div>
 
 <div class="card">
 <h2>03. Xác nhận đơn demo</h2>
-<p id="selected" class="note">Bạn chưa chọn gói kim cương.</p>
+<p id="selected" class="small">Bạn chưa chọn gói.</p>
 <button onclick="createOrder()">TẠO ĐƠN DEMO</button>
-<div id="result"></div>
-<p class="note">Đây là giao diện mô phỏng do người dùng tạo, không phải cổng nạp chính thức của Garena. Không thanh toán thật và không có chức năng cộng kim cương vào tài khoản.</p>
+<p id="result" class="small"></p>
 </div>
+
+<div class="card">
+<h2>04. Lịch sử đơn hàng</h2>
+<div id="history" class="small">Chưa có đơn hàng.</div>
+</div>
+<button onclick="logoutAdmin()">ĐĂNG XUẤT ADMIN</button>
 </main>
 
-<footer>FF DIAMOND SHOP · FAN-MADE DEMO</footer>
-
 <script>
-let selected=null;
+function loginAdmin(){
+let u=document.getElementById('username').value;
+let p=document.getElementById('password').value;
+if(u==='admin'&&p==='123456'){
+document.getElementById('login').style.display='none';
+document.getElementById('dashboard').style.display='block';
+}else{
+document.getElementById('error').textContent='Tên đăng nhập hoặc mật khẩu chưa đúng.';
+}
+}
+function logoutAdmin(){
+document.getElementById('dashboard').style.display='none';
+document.getElementById('login').style.display='block';
+}
+let selected=null,orderCount=0;
 function choose(el,price,diamonds){
 document.querySelectorAll('.package').forEach(x=>x.classList.remove('active'));
 el.classList.add('active');
 selected={price,diamonds};
 document.getElementById('selected').textContent=
-'Gói đã chọn: '+diamonds.toLocaleString('vi-VN')+
-' KC — '+price.toLocaleString('vi-VN')+'đ';
+'Đã chọn '+diamonds.toLocaleString('vi-VN')+' KC — '+price.toLocaleString('vi-VN')+'đ';
 }
 function createOrder(){
 let uid=document.getElementById('uid').value.trim();
 let result=document.getElementById('result');
 if(!uid){result.textContent='Vui lòng nhập UID demo.';return}
 if(!selected){result.textContent='Vui lòng chọn gói kim cương.';return}
-result.textContent='Đã tạo đơn mô phỏng: '+selected.diamonds.toLocaleString('vi-VN')+' KC. Không có thanh toán hoặc nạp kim cương thật.';
+orderCount++;
+result.textContent='Đã tạo đơn mô phỏng #'+orderCount+'. Chưa có thanh toán hoặc nạp kim cương thật.';
+let history=document.getElementById('history');
+if(orderCount===1)history.innerHTML='';
+let item=document.createElement('div');
+item.className='item';
+item.textContent='Đơn #'+orderCount+' | UID: '+uid+' | '+selected.diamonds+' KC | '+selected.price.toLocaleString('vi-VN')+'đ | DEMO';
+history.prepend(item);
 }
 </script>
 </body>
