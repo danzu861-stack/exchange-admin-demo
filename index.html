@@ -4,49 +4,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FF Diamond Shop</title>
+<title>SHOP HÙNG AKIRA VN</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#0b0b10;color:white;font-family:Arial,sans-serif}
-header{padding:20px;background:#17151b;border-bottom:2px solid #ff9d00}
-.logo{font-size:22px;font-weight:bold;color:#ffae00}
-main{max-width:850px;margin:25px auto;padding:15px}
-.card{background:#191820;border:1px solid #39313a;border-radius:13px;padding:20px;margin:18px 0}
-h1,h2{color:#ffb52e}
-input{width:100%;padding:14px;background:#0e0d13;border:1px solid #51434a;border-radius:8px;color:white;margin:10px 0}
-button{width:100%;padding:14px;background:linear-gradient(90deg,#ff9d00,#e65a00);border:0;border-radius:9px;color:white;font-weight:bold;margin-top:12px}
-.small{font-size:12px;color:#aaa;line-height:1.6}
-#dashboard{display:none}
-.login{max-width:400px;margin:65px auto}
+body{margin:0;background:#f3f5f9;color:#202b3c;font-family:Arial,sans-serif}
+header{background:#17243a;color:white;padding:17px 5%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:21px;font-weight:900;color:#ffb12b}
+nav a{color:white;text-decoration:none;margin-left:15px;font-size:13px}
+main{max-width:1050px;margin:25px auto;padding:0 15px}
+.banner{background:linear-gradient(110deg,#182943,#354d70,#9a4b19);padding:35px 25px;border-radius:13px;color:white}
+.banner h1{font-size:28px;margin:0 0 10px;color:#ffc35b}
+.banner p{margin:0;color:#eee}
+.layout{display:grid;grid-template-columns:220px 1fr;gap:18px;margin-top:20px}
+.card{background:white;border:1px solid #e2e7ef;border-radius:11px;padding:20px;margin-bottom:17px}
+h2{font-size:18px;margin-top:0}
+.menu div{padding:13px;border-bottom:1px solid #eee;font-size:14px}
+.menu .active{color:#e98716;font-weight:bold}
+input{width:100%;padding:13px;border:1px solid #d5dce6;border-radius:7px;margin:9px 0 15px}
+button{background:#ed941c;color:white;border:0;border-radius:7px;padding:13px;font-weight:bold;cursor:pointer}
+button.full{width:100%}
 .packages{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.package{background:#29232a;border:1px solid #55434a;border-radius:12px;padding:18px;text-align:center;cursor:pointer}
-.package.active{border:2px solid #ffae00;background:#392817}
-.diamond{font-size:24px;color:#55caff;font-weight:bold}
-.price{font-size:19px;color:#ffbd43;margin-top:8px}
-.item{padding:13px 0;border-bottom:1px solid #39313a;font-size:13px;line-height:1.7}
-@media(max-width:500px){.packages{grid-template-columns:1fr}}
+.package{border:1px solid #dce2eb;border-radius:9px;padding:17px;text-align:center;cursor:pointer}
+.package.active{border:2px solid #ed941c;background:#fff8ed}
+.diamond{font-size:23px;color:#2697ce;font-weight:bold}
+.price{font-size:18px;color:#e98716;font-weight:bold;margin-top:8px}
+.small{font-size:12px;color:#7d8795;line-height:1.6}
+#login{max-width:390px;margin:65px auto}
+#shop{display:none}
+#result{margin-top:12px;color:#287a48;font-size:13px}
+.order{padding:12px 0;border-bottom:1px solid #eee;font-size:13px;line-height:1.7}
+footer{text-align:center;color:#7b8491;padding:25px;font-size:12px}
+@media(max-width:650px){
+.layout{grid-template-columns:1fr}
+.packages{grid-template-columns:1fr}
+header{padding:15px}
+nav a{margin-left:7px}
+}
 </style>
 </head>
 <body>
-<header><div class="logo">💎 FF DIAMOND SHOP</div></header>
 
-<div id="login" class="login card">
-<h1>Đăng nhập Admin</h1>
-<p class="small">Đăng nhập để mở bảng điều khiển demo.</p>
+<header>
+<div class="logo">HÙNG AKIRA VN</div>
+<nav>
+<a href="#home">Trang chủ</a>
+<a href="#nap">Nạp game</a>
+<a href="#history">Đơn hàng</a>
+</nav>
+</header>
+
+<div id="login" class="card">
+<h2>Đăng nhập quản trị</h2>
+<p class="small">Khu vực dành cho Admin demo.</p>
 <input id="username" placeholder="Tên đăng nhập">
 <input id="password" type="password" placeholder="Mật khẩu">
-<button onclick="loginAdmin()">ĐĂNG NHẬP</button>
+<button class="full" onclick="loginAdmin()">ĐĂNG NHẬP</button>
 <p id="error" class="small"></p>
 <p class="small">Tài khoản demo: admin / 123456</p>
 </div>
 
-<main id="dashboard">
-<h1>Shop nạp kim cương FF</h1>
-<p class="small">Giao diện mô phỏng, không liên kết hệ thống Garena.</p>
+<main id="shop">
+<section class="banner" id="home">
+<h1>SHOP HÙNG AKIRA VN</h1>
+<p>TRUNG TÂM GIAO DIỆN NẠP GAME DEMO</p>
+</section>
 
-<div class="card">
-<h2>01. UID người chơi</h2>
-<input id="uid" placeholder="Nhập UID Free Fire">
+<div class="layout">
+<aside class="card menu">
+<h2>Danh mục game</h2>
+<div class="active">💎 Free Fire</div>
+<div>Game khác - sắp ra mắt</div>
+<p class="small">Website demo độc lập, không phải cổng nạp chính thức.</p>
+</aside>
+
+<section>
+<div class="card" id="nap">
+<h2>01. Thông tin người chơi</h2>
+<label>UID Free Fire</label>
+<input id="uid" placeholder="Nhập UID người chơi">
+<p class="small">Chỉ nhập UID để minh họa đơn hàng. Không nhập mật khẩu tài khoản game.</p>
 </div>
 
 <div class="card">
@@ -71,35 +107,44 @@ button{width:100%;padding:14px;background:linear-gradient(90deg,#ff9d00,#e65a00)
 </div>
 
 <div class="card">
-<h2>03. Xác nhận đơn demo</h2>
-<p id="selected" class="small">Bạn chưa chọn gói.</p>
-<button onclick="createOrder()">TẠO ĐƠN DEMO</button>
-<p id="result" class="small"></p>
+<h2>03. Xác nhận đơn hàng demo</h2>
+<p id="selected" class="small">Bạn chưa chọn gói kim cương.</p>
+<button class="full" onclick="createOrder()">TẠO ĐƠN DEMO</button>
+<p id="result"></p>
+<p class="small">Đây là bản mô phỏng. Không nhận thanh toán và không cộng kim cương vào tài khoản Free Fire.</p>
 </div>
 
-<div class="card">
-<h2>04. Lịch sử đơn hàng</h2>
-<div id="history" class="small">Chưa có đơn hàng.</div>
+<div class="card" id="history">
+<h2>Lịch sử đơn hàng demo</h2>
+<div id="orders" class="small">Chưa có đơn hàng.</div>
 </div>
 <button onclick="logoutAdmin()">ĐĂNG XUẤT ADMIN</button>
+</section>
+</div>
 </main>
 
+<footer>SHOP HÙNG AKIRA VN · DEMO VERSION</footer>
+
 <script>
+let selected=null;
+let orderCount=0;
+
 function loginAdmin(){
 let u=document.getElementById('username').value;
 let p=document.getElementById('password').value;
 if(u==='admin'&&p==='123456'){
 document.getElementById('login').style.display='none';
-document.getElementById('dashboard').style.display='block';
+document.getElementById('shop').style.display='block';
 }else{
-document.getElementById('error').textContent='Tên đăng nhập hoặc mật khẩu chưa đúng.';
+document.getElementById('error').textContent='Thông tin đăng nhập chưa đúng.';
 }
 }
+
 function logoutAdmin(){
-document.getElementById('dashboard').style.display='none';
+document.getElementById('shop').style.display='none';
 document.getElementById('login').style.display='block';
 }
-let selected=null,orderCount=0;
+
 function choose(el,price,diamonds){
 document.querySelectorAll('.package').forEach(x=>x.classList.remove('active'));
 el.classList.add('active');
@@ -107,19 +152,20 @@ selected={price,diamonds};
 document.getElementById('selected').textContent=
 'Đã chọn '+diamonds.toLocaleString('vi-VN')+' KC — '+price.toLocaleString('vi-VN')+'đ';
 }
+
 function createOrder(){
 let uid=document.getElementById('uid').value.trim();
 let result=document.getElementById('result');
 if(!uid){result.textContent='Vui lòng nhập UID demo.';return}
 if(!selected){result.textContent='Vui lòng chọn gói kim cương.';return}
 orderCount++;
-result.textContent='Đã tạo đơn mô phỏng #'+orderCount+'. Chưa có thanh toán hoặc nạp kim cương thật.';
-let history=document.getElementById('history');
-if(orderCount===1)history.innerHTML='';
+result.textContent='Đã tạo đơn demo #'+orderCount+'. Không phát sinh thanh toán thật.';
+let orders=document.getElementById('orders');
+if(orderCount===1)orders.innerHTML='';
 let item=document.createElement('div');
-item.className='item';
+item.className='order';
 item.textContent='Đơn #'+orderCount+' | UID: '+uid+' | '+selected.diamonds+' KC | '+selected.price.toLocaleString('vi-VN')+'đ | DEMO';
-history.prepend(item);
+orders.prepend(item);
 }
 </script>
 </body>
